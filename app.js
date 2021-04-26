@@ -5,6 +5,7 @@ dotenv.config();
 import express from 'express';
 import coursesRouter from './code/routes/coursesRoutes';
 import usersRouter from './code/routes/userRoutes';
+import personRouter from './code/routes/personRoutes';
 import authRouter from './code/routes/authRoutes';
 
 class App {
@@ -20,9 +21,11 @@ class App {
   }
 
   routes() {
-    this.app.use('/api/cursos', coursesRouter);
-    this.app.use('/api/users', usersRouter);
-    this.app.use('/api/auth', authRouter);
+    this.app
+      .use('/api/cursos', coursesRouter)
+      .use('/api/users', usersRouter)
+      .use('/api/person', personRouter)
+      .use('/api/auth', authRouter);
   }
 }
 
