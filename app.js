@@ -6,6 +6,7 @@ import express from 'express';
 import coursesRouter from './code/routes/coursesRoutes';
 import usersRouter from './code/routes/userRoutes';
 import personRouter from './code/routes/personRoutes';
+import institutionRouter from './code/routes/institutionRoutes';
 import authRouter from './code/routes/authRoutes';
 
 class App {
@@ -25,6 +26,7 @@ class App {
       .use('/api/cursos', coursesRouter)
       .use('/api/users', usersRouter)
       .use('/api/person', personRouter)
+      .use('/api/institution', institutionRouter)
       .use('/api/auth', authRouter);
   }
 }
