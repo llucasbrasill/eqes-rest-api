@@ -1,10 +1,13 @@
+import User from './User';
 import databaseConfig from '../config/database';
 
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize, Model, DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize(databaseConfig);
 
-const Institution = sequelize.define('institution', {
+class Institution extends Model {}
+
+Institution.init({
   name: {
     type: DataTypes.STRING(255),
     defaultValue: '',
@@ -50,5 +53,8 @@ const Institution = sequelize.define('institution', {
   paranoid: true,
   freezeTableName: 'institution',
 });
+
+User.hasOne(Institution, { foreignKey: 'user_id', as: 'instituition' });
+Institution.hasOne(User, { foreignKey: 'id', as: 'user' });
 
 export default Institution;
